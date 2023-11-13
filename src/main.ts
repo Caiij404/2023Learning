@@ -12,7 +12,8 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(0, 10, 10);
+// camera.up.set(0, 0, 1);
+camera.position.set(0, 75, 75);
 scene.add(camera);
 
 const light = new THREE.AmbientLight(0xffffff);
@@ -25,8 +26,13 @@ window.addEventListener("resize", () => {
   renderer.setPixelRatio(window.devicePixelRatio);
 });
 
-const axisHelper = new THREE.AxesHelper(10);
+const axisHelper = new THREE.AxesHelper(50);
+axisHelper.position.y += 1;
 scene.add(axisHelper);
+
+// 画布网格线
+const gridHelper = new THREE.GridHelper(1000, 100, 100);
+scene.add(gridHelper);
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
